@@ -5,6 +5,7 @@ import {
     Route,
     Link,
 } from "react-router-dom";
+
 import Alphabets from "./Pages/Alphabets";
 
 const App = () => {
