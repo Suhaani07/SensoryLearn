@@ -2,7 +2,8 @@ from flask import Flask
 import os
 import google.generativeai as genai
 
-os.environ['GOOGLE_API_KEY'] = "AIzaSyBKFFVOxPXtg3QIx5iSQEHLFFAeR-8SWhg"
+SECRET_KEY=os.environ.get('KEY')
+os.environ['GOOGLE_API_KEY'] = SECRET_KEY
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 model = genai.GenerativeModel('gemini-pro')
