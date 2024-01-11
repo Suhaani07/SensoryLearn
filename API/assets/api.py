@@ -10,6 +10,7 @@ model = genai.GenerativeModel('gemini-pro')
 
 app = Flask(__name__)
 
+
 @app.route('/api/answer/')
 def geminiresponse():
     letter = model.generate_content("Give english aphabet letter 'a' as capital") 
