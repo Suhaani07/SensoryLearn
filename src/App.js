@@ -1,31 +1,28 @@
-import './App.css';
-import React,{ useEffect, useState } from 'react';
+import React, { Component } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link,
+} from "react-router-dom";
+import Alphabets from "./Pages/Alphabets";
 
-function App() {
-
-  const [answer, setAnswer] = useState(2);
-  useEffect(() => {
-    fetch("/api/answer/")
-    .then(res => res.json())
-    .then(data => {
-      setAnswer(data.answer);
-    });
-    
-  },[]);
-
+const App = () => {
   return (
-
-      <div>
-        <h1>{answer.letter}</h1>
-        <p>Sound: {answer.sound}</p>
-        <p>Explanation: {answer.explanation}</p>
-        <p>Example: {answer.example}</p>
-  
-        <img src={answer.letterimage} alt="Letter" />
-        <img src={answer.exampleimage} alt="Example" />
-      </div>
-    );
-  
-}
+    <Router>
+    <div className="App">
+    <ul className="App-header">
+    <li><Link to="/learnenglish">Home</Link> </li>
+    <li><Link to="/about">About Us</Link></li>
+    <li><Link to="/contact">Contact Us</Link></li>
+    </ul>
+    <Routes>
+    <Route exact path="/learnenglish" element={<Alphabets />}> 
+    </Route>
+    </Routes>
+    </div>
+    </Router>
+  );
+};
 
 export default App;
