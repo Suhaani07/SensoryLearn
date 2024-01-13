@@ -7,19 +7,17 @@ import {
 } from "react-router-dom";
 
 import Alphabets from "./Pages/Alphabets";
+import Home from "./Pages/Home";
+import Header from "./Components/Header";
 
 const App = () => {
   return (
     <Router>
     <div className="App">
-    <ul className="App-header">
-    <li><Link to="/learnenglish">Home</Link> </li>
-    <li><Link to="/about">About Us</Link></li>
-    <li><Link to="/contact">Contact Us</Link></li>
-    </ul>
+    {<Header />}
     <Routes>
-    <Route exact path="/learnenglish" element={<Alphabets />}> 
-    </Route>
+    <Route exact path="/" element={<Home />}> </Route>
+    <Route exact path="/learnenglish" element={<Alphabets />}> </Route>
     </Routes>
     </div>
     </Router>
