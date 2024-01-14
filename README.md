@@ -1,24 +1,29 @@
 # Sensory Learn
 
-![Sensory Learn Logo](images/sensory_learn_logo.png)
+![Sensory Learn Logo](/public/Logo.png)
 
 ## Introduction
 
 Sensory Learn is an inclusive online educational platform committed to providing education for all, aligning with the United Nations Sustainability Goal No. 4: Quality Education. This platform is specifically designed for underprivileged children who lack access to traditional education. Sensory Learn is available in 30+ languages, ensuring that educational resources are accessible to diverse communities around the world.
+![UN Education Goal](/public/goal.jpg)
 
 ## Features
-
+![Home](/public/home.png)
 ### 1. Customized Curriculum
 
 Sensory Learn offers a tailored curriculum covering essential topics for basic education. Subjects include English, geography, history, computers, and more. The goal is to empower children with the knowledge they need to succeed.
 
+![Customised Curriculum](/public/Curriculum.png)
+
 ### 2. Text-to-Speech Option
 
 To cater to various learning styles, Sensory Learn incorporates a text-to-speech feature. This functionality ensures that children with different abilities and preferences can engage with the content effectively.
+![Language](/public/language.png)
 
 ### 3. AI Bot for Doubt Resolution
 
 Sensory Learn provides a unique opportunity for students to ask questions anytime, anywhere. Our AI Bot is capable of understanding queries through typing, speaking, or even sign language. This feature aims to foster a supportive learning environment and address doubts promptly.
+![Doubts](/public/doubts.png)
 
 ### 4. Technology Stack
 
@@ -26,9 +31,13 @@ Sensory Learn utilizes cutting-edge technologies to make its vision a reality. T
 
 ## Technology Stack
 
+- ![Tech Stack](/public/gemini.jpg)
+
 - **Backend**: Sensory Learn uses Flask, a Python web framework, to handle server-side logic and communicate with the database.
 
 - **Frontend**: The user interface is built using React, providing a dynamic and responsive experience for our users.
+
+- ![Tech Stack](/public/tech.png)
 
 ## How to Run
 
