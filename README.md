@@ -82,4 +82,4 @@ For inquiries and support, feel free to reach out to us at suhaaniaggarwal07@gma
 
 Let's make education accessible to all!
 
-![Education for all](education.png)
+![Education for all](/public/education.png)
