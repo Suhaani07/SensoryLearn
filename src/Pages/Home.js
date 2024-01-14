@@ -16,7 +16,7 @@ const Home = () => {
             <ul>
                 <li><a href="#">English</a></li>
                 <li><a href="#">Mathematics</a></li>
-                <li><a href="#">Geography</a></li>
+                <li><a href="/geography">Geography</a></li>
             </ul>
         </div>
     </div>

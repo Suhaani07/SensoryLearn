@@ -6,7 +6,7 @@ import {
     Link,
 } from "react-router-dom";
 
-import Alphabets from "./Pages/Alphabets";
+import Geography from "./Pages/Geography";
 import Home from "./Pages/Home";
 import Header from "./Components/Header";
 
@@ -17,7 +17,7 @@ const App = () => {
     {<Header />}
     <Routes>
     <Route exact path="/" element={<Home />}> </Route>
-    <Route exact path="/learnenglish" element={<Alphabets />}> </Route>
+    <Route exact path="/geography" element={<Geography />}> </Route>
     </Routes>
     </div>
     </Router>
