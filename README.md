@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Sensory Learn
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Sensory Learn Logo](images/sensory_learn_logo.png)
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+Sensory Learn is an inclusive online educational platform committed to providing education for all, aligning with the United Nations Sustainability Goal No. 4: Quality Education. This platform is specifically designed for underprivileged children who lack access to traditional education. Sensory Learn is available in 30+ languages, ensuring that educational resources are accessible to diverse communities around the world.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Customized Curriculum
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Sensory Learn offers a tailored curriculum covering essential topics for basic education. Subjects include English, geography, history, computers, and more. The goal is to empower children with the knowledge they need to succeed.
 
-### `npm test`
+### 2. Text-to-Speech Option
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To cater to various learning styles, Sensory Learn incorporates a text-to-speech feature. This functionality ensures that children with different abilities and preferences can engage with the content effectively.
 
-### `npm run build`
+### 3. AI Bot for Doubt Resolution
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Sensory Learn provides a unique opportunity for students to ask questions anytime, anywhere. Our AI Bot is capable of understanding queries through typing, speaking, or even sign language. This feature aims to foster a supportive learning environment and address doubts promptly.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 4. Technology Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Sensory Learn utilizes cutting-edge technologies to make its vision a reality. The platform leverages Google's Large Language Model (LLM), Gemini, to deliver personalized and effective educational experiences. In the future, we plan to extend our use of technology by incorporating Mediapipe, TensorFlow, Google Cloud, Google Text-to-Speech APIs, and more.
 
-### `npm run eject`
+## Technology Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Backend**: Sensory Learn uses Flask, a Python web framework, to handle server-side logic and communicate with the database.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Frontend**: The user interface is built using React, providing a dynamic and responsive experience for our users.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## How to Run
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Follow these steps to set up and run Sensory Learn locally:
 
-## Learn More
+1. **Clone the Repository:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+    git clone https://github.com/your-username/sensory-learn.git
+    cd sensory-learn
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install Dependencies:**
 
-### Code Splitting
+    ```bash
+    # Install backend dependencies
+    pip install -r requirements.txt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    # Install frontend dependencies
+    npm install
+    ```
 
-### Analyzing the Bundle Size
+3. **Run the Application:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```bash
+    # Run Flask backend
+    flask run
 
-### Making a Progressive Web App
+    # Run React frontend
+    npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    The application will be accessible at `http://localhost:3000` by default.
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+We welcome contributions to Sensory Learn! Whether it's improving existing features, adding new languages, or integrating additional technologies, your input is valuable. Please refer to our [contribution guidelines](CONTRIBUTING.md) for more information.
 
-### Deployment
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For inquiries and support, feel free to reach out to us at support@sensorylearn.com.
 
-### `npm run build` fails to minify
+Let's make education accessible to all!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Sensory Learn in Action](images/sensory_learn_in_action.png)
