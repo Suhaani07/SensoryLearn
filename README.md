@@ -31,13 +31,13 @@ Sensory Learn utilizes cutting-edge technologies to make its vision a reality. T
 
 ## Technology Stack
 
-- ![Tech Stack](/public/gemini.jpg)
+![LLM](/public/gemini.jpg)
 
 - **Backend**: Sensory Learn uses Flask, a Python web framework, to handle server-side logic and communicate with the database.
 
 - **Frontend**: The user interface is built using React, providing a dynamic and responsive experience for our users.
 
-- ![Tech Stack](/public/tech.png)
+![Tech Stack](/public/tech.png)
 
 ## How to Run
 
@@ -74,12 +74,12 @@ Follow these steps to set up and run Sensory Learn locally:
 
 ## Contributing
 
-We welcome contributions to Sensory Learn! Whether it's improving existing features, adding new languages, or integrating additional technologies, your input is valuable. Please refer to our [contribution guidelines](CONTRIBUTING.md) for more information.
+We welcome contributions to Sensory Learn! Whether it's improving existing features, adding new languages, or integrating additional technologies, your input is valuable. 
 
 ## Contact
 
-For inquiries and support, feel free to reach out to us at support@sensorylearn.com.
+For inquiries and support, feel free to reach out to us at suhaaniaggarwal07@gmail.com
 
 Let's make education accessible to all!
 
-![Sensory Learn in Action](images/sensory_learn_in_action.png)
+![Education for all](education.png)
