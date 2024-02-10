@@ -1,43 +1,92 @@
-import "../Styles/Header.css";
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../images/image.png';
+import { Link } from 'react-router-dom';
+
+const HeaderWrapper = styled.header`
+  background-color: #F5D2D2;
+  color: white;
+  padding: 7px;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 16px;
+  }
+
+  li {
+    margin: 0 1rem;
+    cursor: pointer;
+    color: #EF6968;
+    transition: color 0.3s ease; /* Add transition effect */
+  }
+
+  a {
+    text-decoration: none;
+    color: #EF6968;
+    transition: color 0.3s ease; /* Add transition effect */
+  }
+
+  li:hover,
+  a:hover {
+    color: #fff; /* Change color on hover */
+  }
+`;
+
+const Name = styled.h1`
+  margin-left: 10px;
+  color: #000000;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+`;
+
+const Logo = styled.img`
+  height: 90px;
+  margin-right: 3px;
+  margin-left: 19px;
+`;
 
 const Header = () => {
-  const openStreamlitPage = () => {
-    const streamlitURL = 'http://192.168.223.197:8501';
-    
-    // Open Streamlit page in a new tab or window
-    window.open(streamlitURL, '_blank');
-  };
+  const user = localStorage.getItem('user');
+  const signOut = () => {
+    localStorage.clear()
+    window.location.reload()
+};
   return (
-    <div>
-      <section id="logo">
-    <nav class="navbar navbar-expand-lg " id="navbar-custom">
-      <div class="container-fluid">
-        {/* <a class="navbar-brand" href="#">
-        <img src="robot.jpg" alt="Logo" width="100" height="70" class="d-inline-block align-text-top"/></a> */}
-        <a class="navbar-brand " id="brand-text" href="/">SensoryLearn</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" id="home" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/products">Subjects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login" onClick={openStreamlitPage}>Ask Doubts</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <HeaderWrapper>
+      <Nav>
+      <Link to='/'>
+        <FlexContainer>
+          <Logo src={logo} alt="Logo" />
+          <Name>Sensory Learn</Name>
+        </FlexContainer>
+      </Link>
+        <ul>
+          <li><Link to='/home'>Home</Link></li>
+          <li><Link to='/subjects'>Subjects</Link></li>
+          <li><Link to='/ask-doubts'>Ask Doubts</Link></li>
+          {user ? <li onClick={signOut}>Sign Out</li> : <li><Link to='/signin'>Login</Link></li>}
+        </ul>
+      </Nav>
+    </HeaderWrapper>
+  );
+};
 
-  </section>
-    </div>
-  )
-}
-
-
-export default Header
+export default Header;
