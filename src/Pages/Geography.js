@@ -1,21 +1,15 @@
-import React,{ useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Styles/Geography.css';
 
-
 function Geography() {
-
   const [answer, setAnswer] = useState("Loading");
-  const [text, setText] = useState("Loading");
-  useEffect(() => {
-    fetch("/api/answer/")
-    .then(res => res.json())
-    .then(data => {
-      setAnswer(data.answer);
-      setText(data.answer.toString().replace(/\*/g, ''));
-    });
+  const [audioFilePath, setAudioFilePath] = useState("");
+  let audioPlayer = null;
 
+  useEffect(() => {
+    fetchData();
     const handleBeforeUnload = () => {
-      window.speechSynthesis.cancel();
+      stopAudio();
     };
 
     // Add the 'beforeunload' event listener
@@ -24,22 +18,40 @@ function Geography() {
     // Clean up function to remove the 'beforeunload' event listener
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
-      window.speechSynthesis.cancel();
+      stopAudio();
     };
   }, []);
 
-  useEffect(() => {
-    // Cleanup speech synthesis when answer changes
-    window.speechSynthesis.cancel();
-  }, [answer]);
+  const fetchData = () => {
+    fetch("/api/answer/")
+      .then(res => res.json())
+      .then(data => {
+        setAnswer(data.answer);
+        setAudioFilePath(data.audio_file_path);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  };
 
-  const  Sound = () => {
-    let utterance = new SpeechSynthesisUtterance();
-    utterance.text = text;
-    utterance.voice = window.speechSynthesis.getVoices()[0];
-    window.speechSynthesis.speak(utterance);
+  const playAudio = () => {
+    if (audioFilePath) {
+      const timestamp = new Date().getTime();
+      const audioUrl = `http://localhost:5000/api/get-audio/?timestamp=${timestamp}`;
+      audioPlayer = new Audio(audioUrl);
+      audioPlayer.play();
+      console.log('Playing audio:', audioFilePath);
+    }
+  };
+  
 
-  }
+  const stopAudio = () => {
+    if (audioPlayer) {
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+      console.log('Audio stopped');
+    }
+  };
 
   const handleNextClick = () => {
     fetch("/api/next-word/", {
@@ -52,27 +64,30 @@ function Geography() {
       .then(res => res.json())
       .then(data => {
         setAnswer(data.answer);
-        setText(data.answer.toString().replace(/\*/g, ''));
+        setAudioFilePath(data.audio_file_path);
+        stopAudio(); // Stop audio before playing the next one
       })
+      .catch(error => {
+        console.error('Error fetching next word data:', error);
+      });
   };
-  
-  return (
 
+  return (
     <div>
-    <div class="box-form">
-<div class="left">
-  <div class="overlay">
-    <button type='submit' onClick={Sound}>Listen </button>
-  </div>
-</div>
-  <div class="right">
-  {answer}
-</div>
-</div>
-<button type='submit' onClick={handleNextClick}>Next </button>
-  </div>
-    );
-  
+      <div className="box-form">
+        <div className="left">
+          <div className="overlay">
+            <button type='submit' onClick={playAudio}>Listen </button>
+            <button type='submit' onClick={stopAudio}>Stop </button>
+          </div>
+        </div>
+        <div className="right">
+          {answer}
+        </div>
+      </div>
+      <button type='submit' onClick={handleNextClick}>Next </button>
+    </div>
+  );
 }
 
 export default Geography;
