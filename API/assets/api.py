@@ -37,21 +37,30 @@ def generate_audio_from_text(text):
 
     return os.path.abspath(audio_file_path)
 
-@app.route('/api/answer/')
+@app.route('/api/answer/', methods=['POST'])
 def gemini_response():
-    response = model.generate_content("Give song to learn about 7 continents of the world in the form of a song, easy for small kids in hindi",
-                                      generation_config=genai.types.GenerationConfig(
-                                          candidate_count=1,
-                                          max_output_tokens=800,
-                                          top_p=0.6,
-                                          top_k=5,
-                                          temperature=0.8))
+    try :
+        age = request.json['age']
+        language = request.json['language']
+        subject = request.json['subject']
+        response = model.generate_content("Give information about continents topic in" + subject +" in " + language + " for " + age + " years old kids",
+                                        generation_config=genai.types.GenerationConfig(
+                                            candidate_count=1,
+                                            max_output_tokens=800,
+                                            top_p=0.6,
+                                            top_k=5,
+                                            temperature=0.8))
 
-    # Perform the text-to-speech on the generated text
-    audio_file_path = generate_audio_from_text(response.text)
+        # Perform the text-to-speech on the generated text
+        audio_file_path = generate_audio_from_text(response.text)
 
-    # Return the path to the generated audio file along with the text
-    return {'answer': response.text, 'audio_file_path': audio_file_path}
+        # Return the path to the generated audio file along with the text
+        return {'answer': response.text, 'audio_file_path': audio_file_path}
+    except KeyError as e:
+        print(f"KeyError: {str(e)}")
+        print(f"Request JSON Data: {request.json}")
+        return {'error': 'Invalid request data'}, 400
+
 
 @app.route('/api/get-audio/')
 def get_audio():

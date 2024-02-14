@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/Geography.css';
+import { useLocation } from 'react-router-dom';
 
 function Geography() {
   const [answer, setAnswer] = useState("Loading");
   const [audioFilePath, setAudioFilePath] = useState("");
   let audioPlayer = null;
-
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const param1 = params.get("param1");
+  const param2 = params.get("param2");
+  const param3 = params.get("param3");
+  console.log("Params:", param1, param2, param3);
   useEffect(() => {
     fetchData();
     const handleBeforeUnload = () => {
@@ -20,10 +26,17 @@ function Geography() {
       window.removeEventListener('beforeunload', handleBeforeUnload);
       stopAudio();
     };
-  }, []);
+  }, [param1, param2, param3]); // Dependencies are set to params
 
   const fetchData = () => {
-    fetch("/api/answer/")
+    // Use these values in the fetch request
+    fetch("/api/answer/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ age: param1, language: param2, subject: param3 }),
+    })
       .then(res => res.json())
       .then(data => {
         setAnswer(data.answer);
@@ -33,6 +46,7 @@ function Geography() {
         console.error('Error fetching data:', error);
       });
   };
+
 
   const playAudio = () => {
     if (audioFilePath) {

@@ -3,8 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import Robot from './images/robot.jpg';
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Geography from './Pages/Geography.js';
+import { useNavigate } from 'react-router-dom';
 
 const waveAnimation = keyframes`
   0%, 100% {
@@ -96,18 +95,16 @@ const SelectedOptionsText = styled.p`
 `;
 
 const GoButton = styled.button`
-background-color: #aed9e0;
-color: #fff;
-font-size: 16px;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-top: 10px;
+  background-color: #aed9e0;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s, color 0.3s;
 
-//margin-right: auto; /* Push the button to the left */
-//margin-left: 10px; /* Add some left margin for spacing */
-transition: background-color 0.3s, color 0.3s;
   &:hover {
     background-color: #0056b3;
   }
@@ -117,28 +114,14 @@ const Subjects = () => {
   const [selectedAge, setSelectedAge] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
-
-  const handleAgeSelection = (age) => {
-    setSelectedAge(age);
-    setSelectedLanguage(null);
-    setSelectedSubject(null);
-  };
-
-  const handleLanguageSelection = (language) => {
-    setSelectedLanguage(language);
-    setSelectedSubject(null);
-  };
-
-  const handleSubjectSelection = (subject) => {
-    setSelectedSubject(subject);
-  };
+  const navigate = useNavigate();
 
   const handleGoButtonClick = () => {
-    // Handle redirection to the selected subject page
-    // You can use a routing library like react-router-dom or implement your custom redirection logic here.
-    // For now, let's just log the selected options.
     console.log("Redirecting to", selectedSubject);
-
+    console.log("Age:", selectedAge, "Language:", selectedLanguage, "Subject:", selectedSubject)
+    const url = `/geography?param1=${selectedAge}&param2=${selectedLanguage}&param3=${selectedSubject}`;
+    console.log("URL:", url);
+    navigate(url);
   };
 
   return (
@@ -154,13 +137,13 @@ const Subjects = () => {
             <Heading2>Choose Age</Heading2>
             <OptionsList>
               <OptionListItem>
-                <OptionLink onClick={() => handleAgeSelection("3-6")}>3-6 Years</OptionLink>
+                <OptionLink onClick={() => setSelectedAge("3-6")}>3-6 Years</OptionLink>
               </OptionListItem>
               <OptionListItem>
-                <OptionLink onClick={() => handleAgeSelection("7-12")}>7-12 Years</OptionLink>
+                <OptionLink onClick={() => setSelectedAge("7-12")}>7-12 Years</OptionLink>
               </OptionListItem>
               <OptionListItem>
-                <OptionLink onClick={() => handleAgeSelection("13-18")}>13-18 Years</OptionLink>
+                <OptionLink onClick={() => setSelectedAge("13-18")}>13-18 Years</OptionLink>
               </OptionListItem>
             </OptionsList>
           </SubjectOptions>
@@ -169,13 +152,13 @@ const Subjects = () => {
               <Heading2>Choose Language</Heading2>
               <OptionsList>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleLanguageSelection("english")}>English</OptionLink>
+                  <OptionLink onClick={() => setSelectedLanguage("english")}>English</OptionLink>
                 </OptionListItem>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleLanguageSelection("spanish")}>Spanish</OptionLink>
+                  <OptionLink onClick={() => setSelectedLanguage("spanish")}>Spanish</OptionLink>
                 </OptionListItem>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleLanguageSelection("french")}>French</OptionLink>
+                  <OptionLink onClick={() => setSelectedLanguage("french")}>French</OptionLink>
                 </OptionListItem>
               </OptionsList>
             </SubjectOptions>
@@ -185,13 +168,13 @@ const Subjects = () => {
               <Heading2>Choose Subject</Heading2>
               <OptionsList>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleSubjectSelection("english")}>English</OptionLink>
+                  <OptionLink onClick={() => setSelectedSubject("english")}>English</OptionLink>
                 </OptionListItem>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleSubjectSelection("maths")}>Mathematics</OptionLink>
+                  <OptionLink onClick={() => setSelectedSubject("maths")}>Mathematics</OptionLink>
                 </OptionListItem>
                 <OptionListItem>
-                  <OptionLink onClick={() => handleSubjectSelection("geography")}>Geography</OptionLink>
+                  <OptionLink onClick={() => setSelectedSubject("geography")}>Geography</OptionLink>
                 </OptionListItem>
               </OptionsList>
             </SubjectOptions>
@@ -199,23 +182,17 @@ const Subjects = () => {
 
           {selectedAge || selectedLanguage || selectedSubject ? (
             <SelectedOptionsContainer>
-            <div>
-              <Heading2>Selected Options</Heading2>
-              {selectedAge && <SelectedOptionsText>Age: {selectedAge}</SelectedOptionsText>}
-              {selectedLanguage && <SelectedOptionsText>Language: {selectedLanguage}</SelectedOptionsText>}
-              {selectedSubject && <SelectedOptionsText>Subject: {selectedSubject}</SelectedOptionsText>}
-            </div>
-            {selectedAge && selectedLanguage && selectedSubject && (
-              <a href={`/${selectedSubject}`}><GoButton onClick={handleGoButtonClick}>Go to {selectedSubject}</GoButton></a>
-            )}
-          </SelectedOptionsContainer>
+              <div>
+                <Heading2>Selected Options</Heading2>
+                {selectedAge && <SelectedOptionsText>Age: {selectedAge}</SelectedOptionsText>}
+                {selectedLanguage && <SelectedOptionsText>Language: {selectedLanguage}</SelectedOptionsText>}
+                {selectedSubject && <SelectedOptionsText>Subject: {selectedSubject}</SelectedOptionsText>}
+              </div>
+              {selectedAge && selectedLanguage && selectedSubject && (
+                <GoButton onClick={handleGoButtonClick}>Go to {selectedSubject}</GoButton>
+              )}
+            </SelectedOptionsContainer>
           ) : null}
-
-          {/* {selectedAge && selectedLanguage && selectedSubject && (
-            <SubjectOptions>
-              <GoButton onClick={handleGoButtonClick}>Go to {selectedSubject}</GoButton>
-            </SubjectOptions>
-          )} */}
         </WelcomeSection>
       </Body>
       <Footer />
