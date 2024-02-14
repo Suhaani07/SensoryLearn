@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 
 import { auth, provider } from "../FireBase";
 import { signInWithPopup } from "firebase/auth";
-import Home from "../Pages/Home";
-import Landing from "../Landing";
+import Home from "../Home";
+
 
 import logo from '../images/image.png';
 
@@ -35,7 +35,7 @@ function SignIn() {
       <Route path="/" element={<img src={logo} onLoad={signIn}></img>} />
     )}
 
-    <Route path="/landing" element={<Landing />} />
+    <Route path="/home" element={<Home />} />
   </Routes>
   );
 

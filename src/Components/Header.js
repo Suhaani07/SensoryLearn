@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const HeaderWrapper = styled.header`
   background-color: #F5D2D2;
   color: white;
-  padding: 7px;
+  //padding: 0px;
   z-index: 1000;
   position: fixed;
   width: 100%;
@@ -79,7 +79,7 @@ const Header = () => {
         </FlexContainer>
       </Link>
         <ul>
-          <li><Link to='/home'>Home</Link></li>
+          {/* <li><Link to='/home'>Home</Link></li>SensoryLearn1/src/HeroSection.css SensoryLearn1/src/HeroSection.js SensoryLearn1/src/Home.js SensoryLearn1/src/HomeData.js */}
           <li><Link to='/subjects'>Subjects</Link></li>
           <li><Link to='/ask-doubts'>Ask Doubts</Link></li>
           {user ? <li onClick={signOut}>Sign Out</li> : <li><Link to='/signin'>Login</Link></li>}

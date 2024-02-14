@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../src/Components/Header.js';
+import Footer from './Components/Footer.js';
 
 const ChatbotWrapper = styled.div`
   display: flex;
@@ -69,7 +70,7 @@ const Doubts = () => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <ChatbotWrapper>
         <ChatContainer>
           {messages.map((message, index) => (
@@ -88,6 +89,7 @@ const Doubts = () => {
           <SendButton onClick={handleSendMessage}>Send</SendButton>
         </InputContainer>
       </ChatbotWrapper>
+      <Footer/>
     </>
   );
 };
