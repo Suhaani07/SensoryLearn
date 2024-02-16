@@ -43,6 +43,7 @@ def gemini_response():
         age = request.json['age']
         language = request.json['language']
         subject = request.json['subject']
+        number= request.json['number']
         response = model.generate_content("Give information about continents topic in" + subject +" in " + language + " for " + age + " years old kids",
                                         generation_config=genai.types.GenerationConfig(
                                             candidate_count=1,
@@ -50,7 +51,7 @@ def gemini_response():
                                             top_p=0.6,
                                             top_k=5,
                                             temperature=0.8))
-
+        print(number)
         # Perform the text-to-speech on the generated text
         audio_file_path = generate_audio_from_text(response.text)
 
@@ -67,24 +68,6 @@ def get_audio():
     # Serve the temporary audio file directly
     audio_file_path = 'temp_audio.mp3'
     return send_file(audio_file_path, mimetype='audio/mp3')
-
-@app.route('/api/next-word/', methods=['POST'])
-def get_next_word_info():
-    data = request.json['word']
-    print(data)
-    response = model.generate_content("Give very simple information about " + data + "for small kids",
-                                      generation_config=genai.types.GenerationConfig(
-                                          candidate_count=1,
-                                          max_output_tokens=800,
-                                          top_p=0.6,
-                                          top_k=5,
-                                          temperature=0.8))
-
-    # Perform the text-to-speech on the generated text
-    audio_file_path = generate_audio_from_text(response.text)
-
-    # Return the path to the generated audio file along with the text
-    return {'answer': response.text, 'audio_file_path': audio_file_path}
 
 if __name__ == '__main__':
     app.run(debug=True)

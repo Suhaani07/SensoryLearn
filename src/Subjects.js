@@ -119,7 +119,7 @@ const Subjects = () => {
   const handleGoButtonClick = () => {
     console.log("Redirecting to", selectedSubject);
     console.log("Age:", selectedAge, "Language:", selectedLanguage, "Subject:", selectedSubject)
-    const url = `/geography?param1=${selectedAge}&param2=${selectedLanguage}&param3=${selectedSubject}`;
+    const url = `/topic?param1=${selectedAge}&param2=${selectedLanguage}&param3=${selectedSubject}&param4=0`;
     console.log("URL:", url);
     navigate(url);
   };
