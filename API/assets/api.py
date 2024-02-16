@@ -1,14 +1,17 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, render_template, jsonify
 from google.cloud import texttospeech
 import os
 import google.generativeai as genai
 from flask_cors import CORS
+from PIL import Image
+import io
 
 SECRET_KEY = os.environ.get('KEY')
 os.environ['GOOGLE_API_KEY'] = SECRET_KEY
 genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 model = genai.GenerativeModel('gemini-pro')
+model1 = genai.GenerativeModel('gemini-pro-vision')
 
 # Define the dictionaries with age-specific topics
 geography = {
@@ -133,7 +136,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'google_secret_key.json.json'
 tts_client = texttospeech.TextToSpeechClient()
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
 def generate_audio_from_text(text):
     audio_file_path = 'temp_audio.mp3'
@@ -156,7 +159,7 @@ def generate_audio_from_text(text):
 def get_topic(subject, age, number):
     # Fetch the topic from the dictionary using the provided age group and number
     print(f"Subject: {subject}, Age: {age}, Number: {number}")
-    
+
     if subject.lower() == 'geography':
         age_group_dict = geography.get(age, {})
     elif subject.lower() == 'maths':
@@ -167,8 +170,6 @@ def get_topic(subject, age, number):
         return 'unknown topic'
 
     return age_group_dict
-
-
 
 @app.route('/api/answer/', methods=['POST'])
 def gemini_response():
@@ -191,11 +192,14 @@ def gemini_response():
             )
         )
 
-        # Perform the text-to-speech on the generated text
-        audio_file_path = generate_audio_from_text(response.text)
+        # Remove asterisks from the response text
+        cleaned_response_text = response.text.replace('*', '')
 
-        # Return the path to the generated audio file along with the text
-        return {'answer': response.text, 'audio_file_path': audio_file_path}
+        # Perform the text-to-speech on the cleaned text
+        audio_file_path = generate_audio_from_text(cleaned_response_text)
+
+        # Return the path to the generated audio file along with the cleaned text
+        return {'answer': cleaned_response_text, 'audio_file_path': audio_file_path}
     except KeyError as e:
         print(f"KeyError: {str(e)}")
         print(f"Request JSON Data: {request.json}")
@@ -206,6 +210,35 @@ def get_audio():
     # Serve the temporary audio file directly
     audio_file_path = 'temp_audio.mp3'
     return send_file(audio_file_path, mimetype='audio/mp3')
+
+@app.route('/api/ask-gemini', methods=['POST'])
+def ask_gemini():
+    data = request.get_json()
+    query = data.get('query', '')
+
+    if query:
+        response = model.generate_content(query)
+        return jsonify({'answer': response.text})
+
+    return jsonify({'error': 'Invalid query'}), 400
+
+@app.route('/api/upload-image', methods=['POST'])
+def upload_image():
+    try:
+        image_file = request.files.get('image')
+        print(image_file)
+        # Check if the image file is received
+        print(request.form['text'])
+
+        pil_image = Image.open(io.BytesIO(image_file.read()))
+        response = model1.generate_content(["Analyse this image", pil_image])
+        # Save the generated audio file temporarily
+        audio_file_path = generate_audio_from_text(response.text)
+
+        return jsonify({'answer': response.text, 'audio_file_path': audio_file_path})
+    except Exception as e:
+        print(f"Error processing image: {e}")
+        return jsonify({'error': 'Error processing image'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
