@@ -138,14 +138,29 @@ tts_client = texttospeech.TextToSpeechClient()
 app = Flask(__name__)
 CORS(app)
 
-def generate_audio_from_text(text):
+@app.route('/api/listen/', methods=['POST'])
+def listen_text():
+    text = request.json['text']
+    language = request.json['language']
+    audio_file_path = generate_audio_from_text(text, language)
+    return {'answer': text, 'audio_file_path': audio_file_path}
+
+
+def generate_audio_from_text(text,language):
     audio_file_path = 'temp_audio.mp3'
     if os.path.exists(audio_file_path):
         os.remove(audio_file_path)
         print(f"Deleted existing audio file at: {audio_file_path}")
-
+    if(language == 'english'):
+        language = 'en-US'
+    elif(language == 'spanish'):
+        language = 'es-ES'
+    elif(language == 'french'):
+        language = 'fr-FR'
+    elif(language == 'hindi'):
+        language = 'hi-IN'
     synthesis_input = texttospeech.SynthesisInput(text=text)
-    voice = texttospeech.VoiceSelectionParams(language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL)
+    voice = texttospeech.VoiceSelectionParams(language_code=f"{language}", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE)
     audio_config = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
     tts_response = tts_client.synthesize_speech(input=synthesis_input, voice=voice, audio_config=audio_config)
 
@@ -193,10 +208,11 @@ def gemini_response():
         )
 
         # Remove asterisks from the response text
-        cleaned_response_text = response.text.replace('*', '')
+        if(subject.lower() != 'maths'):
+            cleaned_response_text = response.text.replace('*', '')
 
         # Perform the text-to-speech on the cleaned text
-        audio_file_path = generate_audio_from_text(cleaned_response_text)
+        audio_file_path = generate_audio_from_text(cleaned_response_text, language)
 
         # Return the path to the generated audio file along with the cleaned text
         return {'answer': cleaned_response_text, 'audio_file_path': audio_file_path}

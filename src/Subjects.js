@@ -4,18 +4,19 @@ import Robot from './images/robot.jpg';
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js';
 import { useNavigate } from 'react-router-dom';
+import Robo from './Robot.js'
 
-const waveAnimation = keyframes`
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  75% {
-    transform: rotate(-20deg);
-  }
-`;
+// const waveAnimation = keyframes`
+//   0%, 100% {
+//     transform: rotate(0deg);
+//   }
+//   25% {
+//     transform: rotate(20deg);
+//   }
+//   75% {
+//     transform: rotate(-20deg);
+//   }
+// `;
 
 const Body = styled.div`
   margin: 0;
@@ -35,11 +36,11 @@ const RobotContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const RobotImage = styled.img`
-  width: 150px;
-  height: 150px;
-  animation: ${waveAnimation} 2s infinite;
-`;
+// const RobotImage = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   animation: ${waveAnimation} 2s infinite;
+// `;
 
 const RobotText = styled.p`
   font-size: 18px;
@@ -130,7 +131,7 @@ const Subjects = () => {
       <Body>
         <WelcomeSection>
           <RobotContainer>
-            <RobotImage src={Robot} alt="Waving Robot" />
+            <Robo/>
             <RobotText>Hello, I'm your BotTeacher!</RobotText>
           </RobotContainer>
           <SubjectOptions>
@@ -153,6 +154,9 @@ const Subjects = () => {
               <OptionsList>
                 <OptionListItem>
                   <OptionLink onClick={() => setSelectedLanguage("english")}>English</OptionLink>
+                </OptionListItem>
+                <OptionListItem>
+                  <OptionLink onClick={() => setSelectedLanguage("hindi")}>Hindi</OptionLink>
                 </OptionListItem>
                 <OptionListItem>
                   <OptionLink onClick={() => setSelectedLanguage("spanish")}>Spanish</OptionLink>

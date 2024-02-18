@@ -80,6 +80,21 @@ function Topic() {
     if (docSnap.exists()) {
       console.log("Document exists!");
       const data = docSnap.data();
+      fetch("/api/listen/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: data.answer, language: param2}),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log('Fetched audio:', data);
+          setAudioFilePath(data.audio_file_path);
+        })
+        .catch(error => {
+          console.error('Error fetching audio:', error);
+        });
       setAnswer(data.answer);
       setAudioFilePath(data.audioFilePath);
       stopAudio();
@@ -149,9 +164,11 @@ function Topic() {
   `;
 
   const BoxForm = styled.div`
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-left: 50px;
     margin-bottom: 100px;
-    width: 80%;
+    margin-right: 50px;
+    width: 92%;
     height: 100%;
     background: #f3c8c8;
     border-radius: 10px;
@@ -174,7 +191,12 @@ function Topic() {
     }
 
     button {
-      float: right;
+      margin : 10px;
+      float: auto;
+      text-align: center;
+      width:150px;
+      text-align:center;
+      margin-left:auto;
       color: #000000;
       font-size: 16px;
       padding: 12px 35px;
@@ -215,6 +237,7 @@ function Topic() {
             <div className="overlay">
               <button type='submit' onClick={playAudio}>Listen </button>
               <button type='submit' onClick={stopAudio}>Stop </button>
+              <button type='submit'>Sign Language </button>
             </div>
           </Left>
           <Right className="right">

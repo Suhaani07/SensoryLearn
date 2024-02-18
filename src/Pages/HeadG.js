@@ -82,6 +82,7 @@ const Header = () => {
           {/* <li><Link to='/home'>Home</Link></li>SensoryLearn1/src/HeroSection.css SensoryLearn1/src/HeroSection.js SensoryLearn1/src/Home.js SensoryLearn1/src/HomeData.js */}
           <li><Link to='/subjects'>Subjects</Link></li>
           <li><Link to='/ask-doubts'>Ask Doubts</Link></li>
+          <li><Link to='/ask-doubts'>Visualize</Link></li>
           {user ? <li onClick={signOut}>Sign Out</li> : <li><Link to='/signin'>Login</Link></li>}
         </ul>
       </Nav>
