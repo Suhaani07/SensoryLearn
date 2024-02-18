@@ -25,3 +25,5 @@ env311
 .env
 .flaskenv
 google_secret_key.json.json
+.firebase
+.firebaserc
