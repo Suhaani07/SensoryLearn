@@ -219,6 +219,7 @@ const Doubts = () => {
           <ListenButton onClick={handleListen}>Listen</ListenButton>
           <StopButton onClick={handleStop}>Stop</StopButton>
           <SignLanguageButton onClick={handleSignLanguage}>Sign Language</SignLanguageButton>
+          <ListenButton onClick={handleListen}>Mic</ListenButton>
           <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
           <UploadButton onClick={() => document.querySelector('input[type="file"]').click()}>
             Upload
