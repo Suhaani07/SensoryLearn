@@ -10,7 +10,7 @@ function HeroSection({
   headline,
   description,
   buttonLabel,
-  images,  // Change to images
+  images,
   alt,
   imgStart,
   ToLink
@@ -52,14 +52,14 @@ function HeroSection({
             </div>
             <div className='col'>
               <div className='home__hero-img-wrapper'>
-                {Array.isArray(images) && images.length > 0 ? (
+                {Array.isArray(images) && images.length > 1 ? (
                   <div style={{ display: 'flex' }}>
                     {images.map((image, index) => (
-                      <img key={index} src={image} alt={alt} className='home__hero-img' style={{ width: '50%' }} />
+                      <img key={index} src={image} alt={alt} className='home__hero-img' style={{ width: `${100 / images.length}%`, minWidth: '100px' }} />
                     ))}
                   </div>
                 ) : (
-                  <img src={images} alt={alt} className='home__hero-img' />
+                  <img src={Array.isArray(images) ? images[0] : images} alt={alt} className='home__hero-img' style={{ minWidth: '500px' }} />
                 )}
               </div>
             </div>

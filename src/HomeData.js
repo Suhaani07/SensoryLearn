@@ -8,7 +8,7 @@ export const homeObjOne = {
     'Sensory Learn is an inclusive online educational platform committed to providing education for all, aligning with the United Nations Sustainability Goal No. 4: Quality Education. ',
     buttonLabel: 'Book a Meet',
     imgStart: '',
-    img: 'images/mainImage.jpeg',
+    images: ['images/mainImage.jpeg'],
     alt: 'BAckground',
     ToLink: 'Appointment'
   };
@@ -36,7 +36,7 @@ export const homeObjOne = {
       "Capture and safeguard your health story with ease by securely saving your medical reports. Your health history, at your fingertips whenever you need it.",
     buttonLabel: 'Start Now',
     imgStart: 'start',
-    img: 'images/img2.png',
+    images: ['images/img2.png'],
     alt: 'reports',
     ToLink: 'Reports'
   };
