@@ -1,43 +1,74 @@
-# Sensory Learn
+<!-- PROJECT TITLE -->
+<div >
+  <h1  style="bold"  >
+    SENSORY LEARN
+  </h1>
+  
+  <h3>
+    A Solution Challenge 2024 Project
+  </h3>
+  <hr>
+</div>
 
-![Sensory Learn Logo](/public/Logo.png)
 
-## Introduction
+## Overview
+Access to education is not universal, with 650+ children still out of school or lacking one-to-one learning opportunities. Sensory Learn addresses this issue as an inclusive online educational platform, committed to providing quality education for all. Aligned with the United Nations Sustainability Goals No. 4: Quality Education and Goal 10: Reduced Inequalities, Sensory Learn focuses on underprivileged children who lack access to traditional education. 
 
-Sensory Learn is an inclusive online educational platform committed to providing education for all, aligning with the United Nations Sustainability Goal No. 4: Quality Education. This platform is specifically designed for underprivileged children who lack access to traditional education. Sensory Learn is available in 30+ languages, ensuring that educational resources are accessible to diverse communities around the world.
-![UN Education Goal](/public/goal.jpg)
+<p align="center">
+  <img src="/public/Logo.png" alt="Sensory Learn Logo"/>
+</p>
 
-## Features
-![Home](/public/home.png)
-### 1. Customized Curriculum
 
-Sensory Learn offers a tailored curriculum covering essential topics for basic education. Subjects include English, geography, history, computers, and more. The goal is to empower children with the knowledge they need to succeed.
+## Sustainable Development Goals
+Sensory Learn contributes to UN Sustainability Gaol "Quality Education" and "Reduced Inequalities" by providing an inclusive platform available in 40+ languages, ensures educational resources are accessible to diverse communities worldwide. Features like sign language and text-to-speech promote inclusivity, allowing everyone to learn at their own pace.The AI bot, accommodating typed, spoken, or image-based questions, further enhances inclusivity and promotes learning opportunities.
+<p align="center">
+  <img src="public/education.png" alt="Education Icon" width="300" height="300" style="margin-right: 20px;">
+  <img src="public/reduced.png" alt="Reduced Inequalities Icon" width="300" height="300">
+</p>
 
-![Customised Curriculum](/public/Curriculum.png)
+## Project Overview
 
-### 2. Text-to-Speech Option
+### Home Page- 
+![Image](public/homepage.png)
 
-To cater to various learning styles, Sensory Learn incorporates a text-to-speech feature. This functionality ensures that children with different abilities and preferences can engage with the content effectively.
-![Language](/public/language.png)
+### Select Age, Language, and Subject- 
+![Image](public/select.png)
 
-### 3. AI Bot for Doubt Resolution
+### Generated Content- 
+![Image](public/content.png)
 
-Sensory Learn provides a unique opportunity for students to ask questions anytime, anywhere. Our AI Bot is capable of understanding queries through typing, speaking, or even sign language. This feature aims to foster a supportive learning environment and address doubts promptly.
-![Doubts](/public/doubts.png)
+### AI Bot for Doubts- 
+![Image](public/bot.png)
 
-### 4. Technology Stack
 
-Sensory Learn utilizes cutting-edge technologies to make its vision a reality. The platform leverages Google's Large Language Model (LLM), Gemini, to deliver personalized and effective educational experiences. In the future, we plan to extend our use of technology by incorporating Mediapipe, TensorFlow, Google Cloud, Google Text-to-Speech APIs, and more.
+## Project Portals
+- Sensory Learn Website: [Sensory Learn](https://sensorylearn.web.app/)
+- Sensory Learn Demo Video: [Watch Video](link)
 
-## Technology Stack
 
-![LLM](/public/gemini.jpg)
+## Key features
+1. Inclusive online educational platform designed for underprivileged children.
+2. Available in 40+ languages, with features like sign language and text-to-speech for enhanced accessibility.
+3. Customized curriculum for different age groups.
+4. AI bot for answering questions, accepting typed, spoken, or image-based queries.
+5. Promotes quality education and reduced inequalities by providing accessible learning opportunities.
 
-- **Backend**: Sensory Learn uses Flask, a Python web framework, to handle server-side logic and communicate with the database.
+## Google Technologies Used
+<div class="flex ">
+  
+<img src="https://www.freecodecamp.org/news/content/images/2020/10/gcp.png" alt="Image" width="180">
 
-- **Frontend**: The user interface is built using React, providing a dynamic and responsive experience for our users.
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/1280px-Firebase_Logo.svg.png" alt="Image" width="180" >
 
-![Tech Stack](/public/tech.png)
+<img src="https://liwaiwai.com/wp-content/uploads/2023/05/vertex-ai.png" alt="Image" width="180">
+
+<img src="https://assets-global.website-files.com/630d4d1c4a462569dd189855/6584a9975ade35940f95e9ba_2.webp" alt="Image" width="180">
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*-V47O9e3T_LxR3P-lcpR0g.png" alt="Image" width="180">
+  
+</div>
+
+<br>
 
 ## How to Run
 
@@ -72,14 +103,11 @@ Follow these steps to set up and run Sensory Learn locally:
 
     The application will be accessible at `http://localhost:3000` by default.
 
-## Contributing
 
-We welcome contributions to Sensory Learn! Whether it's improving existing features, adding new languages, or integrating additional technologies, your input is valuable. 
+## About us
+### Team Members 
+1. [Suhaani Aggarwal](https://github.com/Suhaani07/)
+2. [Tejashree Bhangale](https://github.com/tejashreee03)
+3. [Austin Paul](https://github.com/)
 
-## Contact
-
-For inquiries and support, feel free to reach out to us at suhaaniaggarwal07@gmail.com
-
-Let's make education accessible to all!
-
-![Education for all](/public/education.png)
+The idea for Sensory Learn originated from our recognition of the educational disparities existing worldwide. We aim to bridge the gap by providing an inclusive platform accessible to all, promoting quality education, and reducing inequalities. Our team consists of dedicated individuals: Suhaani Aggarwal, Tejashree Bhangale, and Austin Paul, who share a common goal of making education accessible for every child.
