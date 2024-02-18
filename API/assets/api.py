@@ -249,7 +249,7 @@ def upload_image():
         pil_image = Image.open(io.BytesIO(image_file.read()))
         response = model1.generate_content(["Analyse this image", pil_image])
         # Save the generated audio file temporarily
-        audio_file_path = generate_audio_from_text(response.text)
+        audio_file_path = generate_audio_from_text(response.text, 'en-US')
 
         return jsonify({'answer': response.text, 'audio_file_path': audio_file_path})
     except Exception as e:
