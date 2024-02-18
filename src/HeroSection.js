@@ -1,6 +1,5 @@
 import React from 'react';
 import './HeroSection.css';
-// import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 function HeroSection({
@@ -11,7 +10,7 @@ function HeroSection({
   headline,
   description,
   buttonLabel,
-  img,
+  images,  // Change to images
   alt,
   imgStart,
   ToLink
@@ -53,7 +52,15 @@ function HeroSection({
             </div>
             <div className='col'>
               <div className='home__hero-img-wrapper'>
-                <img src={img} alt={alt} className='home__hero-img' />
+                {Array.isArray(images) && images.length > 0 ? (
+                  <div style={{ display: 'flex' }}>
+                    {images.map((image, index) => (
+                      <img key={index} src={image} alt={alt} className='home__hero-img' style={{ width: '50%' }} />
+                    ))}
+                  </div>
+                ) : (
+                  <img src={images} alt={alt} className='home__hero-img' />
+                )}
               </div>
             </div>
           </div>

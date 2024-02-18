@@ -21,7 +21,7 @@ export const homeObjOne = {
     description:
     'Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.',
     imgStart: '',
-    img: 'images/new.jpg',
+    images: ['images/new.jpg', 'reduced.png'],
     alt: 'Reminders',
     ToLink: 'Reminders'
   };
