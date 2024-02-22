@@ -43,7 +43,7 @@ Sensory Learn contributes to UN Sustainability Gaol "Quality Education" and "Red
 
 ## Project Portals
 - Sensory Learn Website: [Sensory Learn](https://sensorylearn.web.app/)
-- Sensory Learn Demo Video: [Watch Video](link)
+- Sensory Learn Demo Video: [Watch Video](https://youtu.be/1xONfu-dQKk)
 
 
 ## Key features
